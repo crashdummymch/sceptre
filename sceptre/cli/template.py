@@ -100,3 +100,19 @@ def estimate_cost_command(ctx, path):
             response = response["Url"]
             webbrowser.open(response, new=2)
         write(response + "\n", 'text')
+
+
+@click.command(name="upload-template", short_help="Generate Cloudformation template and upload to s3.")
+@click.argument("path")
+@click.pass_context
+@catch_exceptions
+def upload_template_command(ctx, path):
+    """
+    Prints a URI to STOUT that provides an estimated cost based on the
+    resources in the stack. This command will also attempt to open a web
+    browser with the returned URI.
+    \f
+
+    :param path: Path to execute the command on.
+    :type path: str
+    """
